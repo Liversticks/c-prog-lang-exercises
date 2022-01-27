@@ -66,6 +66,32 @@ int main() {
 int sp = 0;
 double val[MAXVAL];
 
+void peek_stack() {
+    printf("Stack top: %g.\n", val[sp]);
+}
+
+void duplicate_top() {
+    if (sp < MAXVAL) {
+        double temp = val[sp++];
+        val[sp] = temp;
+    }
+    else {
+        printf("Error: stack full, cannot duplicate top element.\n");
+    }
+}
+
+void swap_top() {
+    if (sp < MAXVAL && sp > 0) {
+        double temp = val[sp];
+        val[sp] = val[sp-1];
+        val[sp-1] = temp;
+    }
+}
+
+void clear_stack() {
+    sp = 0;
+}
+
 void push(double f) {
     if (sp < MAXVAL) {
         val[sp++] = f;
