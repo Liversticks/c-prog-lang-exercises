@@ -22,7 +22,9 @@ int main() {
     int type;
     double op2;
     char s[MAXOP];
+    double recent = 0;
 
+    double variables[26] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     while ((type = getop(s)) != EOF) {
         switch(type) {
             case NUMBER:
@@ -69,8 +71,42 @@ int main() {
                     printf("Error: cannot take logarithm of a non-positive value.\n");
                 }
                 break;
+            case 'R':
+                push(recent);
+                break;
+            /*
+            case 'a':
+            case 'b':
+            case 'c':
+            case 'd':
+            case 'e':
+            case 'f':
+            case 'g':
+            case 'h':
+            case 'i':
+            case 'j':
+            case 'k':
+            case 'l':
+            case 'm':
+            case 'n':
+            case 'o':
+            case 'p':
+            case 'q':
+            case 'r':
+            case 's':
+            case 't':
+            case 'u':
+            case 'v':
+            case 'w':
+            case 'x':
+            case 'y':
+            case 'z':
+                push();
+                break;
+            */
             case '\n':
-                printf("\t%.8g\n", pop());
+                recent = pop();
+                printf("\t%.8g\n", recent);
                 break;
             default:
                 printf("Error: unrecognized command (%s)\n", s);
