@@ -5,7 +5,7 @@
 	gcc -std=c99 -o 4-2 4-2.c -lm
 
 calc: calc.c
-	gcc -g -std=c99 -o calc calc.c
+	gcc -g -std=c99 -o calc calc.c -lm
 
 4-12: 4-12.c
 	gcc -std=c99 -o 4-12 4-12.c

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <math.h>
 
 #define MAXOP 100
 
@@ -15,11 +16,12 @@ double pop(void);
 void init(void);
 void destroy(void);
 
+// For future expansion, type should be an enum (decouples operators from representation in input)
+
 int main() {
     int type;
     double op2;
     char s[MAXOP];
-    init();
 
     while ((type = getop(s)) != EOF) {
         switch(type) {
@@ -49,6 +51,24 @@ int main() {
                 op2 = pop();
                 push((long)pop() % (long)op2);
                 break;
+            case '^':
+                op2 = pop();
+                push(pow(pop(), op2));
+                break;
+            // e ^ x
+            case '#':
+                push(exp(pop()));
+                break;
+            // ln(x)
+            case '@':
+                op2 = pop();
+                if (op2 > 0) {
+                    push(log(op2));
+                }
+                else {
+                    printf("Error: cannot take logarithm of a non-positive value.\n");
+                }
+                break;
             case '\n':
                 printf("\t%.8g\n", pop());
                 break;
@@ -57,7 +77,6 @@ int main() {
                 break;
         }
     }
-    destroy();
     return 0;
 }
 
@@ -110,19 +129,6 @@ double pop(void) {
         printf("Error: stack empty.\n");
         return 0.0;
     }
-}
-
-char * line;
-int linePos = 0;
-
-char * getline_nonlib(void);
-
-void init() {
-    line = getline_nonlib();
-}
-
-void destroy() {
-    free(line);
 }
 
 int getop(char* s) {
