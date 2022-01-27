@@ -4,8 +4,8 @@
 4-2: 4-2.c
 	gcc -std=c99 -o 4-2 4-2.c -lm
 
-3-3: 3-3.c
-	gcc -std=c99 -o 3-3 3-3.c
+calc: calc.c
+	gcc -g -std=c99 -o calc calc.c
 
 4-12: 4-12.c
 	gcc -std=c99 -o 4-12 4-12.c
@@ -17,4 +17,4 @@
 	gcc -std=c99 -o 4-14 4-14.c
 
 clean:
-	rm -f *.o *.s 4-1 4-2 3-3 3-4 3-5 3-6 3-7 3-8 4-12 4-13 4-14
+	rm -f *.o *.s 4-1 4-2 calc 4-12 4-13 4-14
