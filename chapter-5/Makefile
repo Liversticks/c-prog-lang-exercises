@@ -4,17 +4,17 @@
 5-2: 5-2.c
 	gcc -std=c99 -o 5-2 5-2.c -lm
 
-calc: calc.c
-	gcc -g -std=c99 -o calc calc.c -lm
+5-3: 5-3.c
+	gcc -std=c99 -o 5-3 5-3.c
 
-4-12: 4-12.c
-	gcc -std=c99 -o 4-12 4-12.c
+5-4: 5-4.c
+	gcc -std=c99 -o 5-4 5-4.c
 
-4-13: 4-13.c
-	gcc -std=c99 -o 4-13 4-13.c
+5-5: 5-5.c
+	gcc -std=c99 -o 5-5 5-5.c
 
-4-14: 4-14.c
-	gcc -std=c99 -o 4-14 4-14.c
+5-6: 5-6.c
+	gcc -std=c99 -o 5-6 5-6.c
 
 clean:
-	rm -f *.o *.s 5-1 5-2 calc 4-12 4-13 4-14
+	rm -f *.o *.s 5-1 5-2 5-3 5-4 5-5 5-6
